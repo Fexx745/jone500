@@ -24,7 +24,7 @@
       <?php
       include('assets/condb/condb.php');
 
-      $sql = "SELECT product_name, product_detail, price, size, image FROM products ORDER BY created_at DESC LIMIT 12";
+      $sql = "SELECT * FROM products ORDER BY created_at DESC LIMIT 12";
       $result = $conn->query($sql);
 
       if ($result) {
@@ -38,23 +38,27 @@
             $productDetail = $row["product_detail"];
             $price = $row["price"];
       ?>
-            <div class="col-md-4 mb-4">
-              <div class="card h-100">
-                <div class="card-img-top text-center">
-                  <div class="bb">
-                    <p><?= $size; ?></p>
+            <div class="col-md-3 mb-3">
+              <a href="product_detail.php?productId=<?= $row['product_id']; ?>" class="text-decoration-none">
+                <div class="card h-100">
+                  <div class="card-img-top text-center">
+                    <div class="bb">
+                      <p><?= $size; ?></p>
+                    </div>
+                    <img src="assets/imge/product/<?= $image; ?>" class="img-fluid" alt="<?= $productName; ?>">
                   </div>
-                  <img src="assets/imge/product/<?= $image; ?>" class="img-fluid" alt="<?= $productName; ?>">
+                  <div class="card-body">
+                    <h5 class="card-title"><?= $productName; ?></h5>
+                    <p class="card-text"><?= $productDetail; ?></p>
+                  </div>
+                  <div class="card-footer text-center">
+                    <span class="text-muted"><?= $price; ?> $</span>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <h5 class="card-title"><?= $productName; ?></h5>
-                  <p class="card-text"><?= $productDetail; ?></p>
-                </div>
-                <div class="card-footer text-center">
-                  <span class="text-muted"><?= $price; ?> $</span>
-                </div>
-              </div>
+              </a>
             </div>
+
+
       <?php
           }
         } else {
@@ -147,8 +151,12 @@
       ?>
     </div>
   </div>
+</body>
 
-  <div class="modal fade show" id="overlay" tabindex="-1" aria-labelledby="overlayLabel" aria-hidden="true" style="display: block;">
+</html>
+
+
+<!-- <div class="modal fade show" id="overlay" tabindex="-1" aria-labelledby="overlayLabel" aria-hidden="true" style="display: block;">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -179,7 +187,4 @@
         overlay.setAttribute('aria-hidden', 'true');
       });
     });
-  </script>
-</body>
-
-</html>
+  </script> -->

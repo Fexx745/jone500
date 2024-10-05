@@ -69,7 +69,7 @@ session_start();
 
                 <?php if (isset($_SESSION['email'])): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="cart.php">
                             <i class='bx bx-cart'></i>
                             รถเข็น
                         </a>

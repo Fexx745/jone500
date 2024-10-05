@@ -883,7 +883,7 @@
 
 
 
-<!-- <div class="overlay" id="overlay">
+<div class="overlay" id="overlay">
   <div class="popup">
     <h2>ยินดีต้อนรับ!</h2>
     <p>กรุณากด "ตกลง" เพื่อเข้าสู่ร้านค้า</p>
@@ -895,7 +895,7 @@
 <div class="main-content">
 </div>
 
-<script src="script.js"></script> -->
+<script src="script.js"></script>
 
 
 
