@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Thai+Looped:wght@200;300;400;500;600;700&family=Kanit:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+  font-family: 'Kanit', sans-serif;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.logo {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo img {
+  width: 100px;
+  margin-top: 20px;
+}
+
+.bx-flashing {
+  position: absolute;
+  right: 180px;
+  top: 35px;
+}
+
+input[type=text] {
+  position: relative;
+  left: 52rem;
+  bottom: 6rem;
+
+}
+
+
+.nav-menu ul {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-menu li {
+  padding: 20px 18px;
+
+}
+
+.nav-menu a {
+  color: #6c6a6a;
+  font-size: 20px;
+  font-weight: 250;
+}
+
+.nav-menu a:hover {
+  color: rgb(210, 65, 65);
+}
+
+.nav-menu i {
+  margin-left: 10px;
+  font-size: 25px;
+
+}
+
+
+
+.swiper {
+  width: 100%;
+  height: 55%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.new {
+  margin-left: 350px;
+  margin-top: 100px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.item-img img {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  grid-gap: 2rem;
+  margin: 20rem;
+  position: relative;
+  bottom: 17rem;
+  left: 2rem;
+}
+
+.item {
+  box-shadow: 0 0 5px #303030;
+  transition: 0.3s;
+}
+
+.item:hover {
+  box-shadow: 0 0 1px #303030;
+
+}
+
+.item-reft {
+  margin-left: 15rem;
+  position: relative;
+  font-weight: 250;
+  font-size: 20px;
+}
+
+.item-des,
+.item-des2 {
+  margin-left: 20px;
+
+}
+
+.item-des p {
+  color: #8d8a8a;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.item-des2 p {
+  color: #8d8a8a;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.box {
+  border: solid 0.5px #dedada;
+  width: 250px;
+  margin-left: 20px;
+}
+
+.bb {
+  position: relative;
+  background-color: #000000;
+  top: 270px;
+  text-align: right;
+  display: none;
+}
+
+.bb p {
+  color: #fcfcfc;
+  margin-right: 15px;
+}
+
+.bb:hover {
+  display: block;
+}
+
+#sef {
+  display: none;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.logomarket {
+  display: none;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.popup img {
+  width: 500px;
+  border-radius: 5%;
+}
+
+button {
+  padding: 10px 20px;
+  background: #55585b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #9fa1a2;
+}
+
+.logonav img {
+  display: none;
+}
+
+
+
+.bbo {
+  background: rgba(79, 78, 78, 0.7);
+  color: #323030;
+  position: relative;
+  bottom: 96px;
+  text-align: center;
+  left: 20px;
+  width: 399px;
+  height: 70px;
+
+}
+
+.bbo p {
+  color: #fff;
+  font-weight: 250;
+  font-size: 25px;
+  padding-top: 20px;
+}
+
+.product-2 {
+  display: grid;
+  grid-template-columns: repeat(3, 0.7fr);
+  margin: 19rem;
+  position: relative;
+  grid: 2px;
+  bottom: 35rem;
+  left: 1rem;
+  padding: 20px;
+}
+
+.img-2 img {
+  width: 105%;
+  height: 100%;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.new-2 {
+  margin-left: 20px;
+  margin-top: 50px;
+  font-size: 25px;
+}
+
+.iem img {
+  position: relative;
+  top: 120px;
+  width: 180px;
+  /* กำหนดความกว้างของรูป */
+  height: 200px;
+  /* กำหนดความสูงของรูป */
+  background-color: #3498db;
+  /* สีพื้นหลังของรูป */
+  border-radius: 50%;
+  /* กำหนดให้มุมของรูปเป็นวงกลม */
+
+}
+
+.iem p {
+  position: relative;
+  top: 130px;
+  left: 40px;
+  font-weight: 250;
+}
+
+.prod {
+  display: flex;
+
+}
+
+.iem-2 img {
+  position: relative;
+  left: 40px;
+  top: 120px;
+  width: 180px;
+  /* กำหนดความกว้างของรูป */
+  height: 200px;
+  /* กำหนดความสูงของรูป */
+  background-color: #3498db;
+  /* สีพื้นหลังของรูป */
+  border-radius: 50%;
+  /* กำหนดให้มุมของรูปเป็นวงกลม */
+
+}
+
+.iem-2 p {
+  position: relative;
+  top: 130px;
+  left: 80px;
+  font-weight: 250;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 624px) and (min-width: 300px) {
+
+
+  .logo img {
+    width: 60px;
+    margin-top: 20px;
+  }
+
+  .nav-menu {
+    display: none;
+
+  }
+
+  .logonav img {
+    position: fixed;
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: -7px;
+    width: 70px;
+    cursor: pointer;
+
+  }
+
+  #sef {
+    margin-top: 11.5px;
+    margin-left: 395px;
+    border: 1px solid #c0bfbf;
+    width: 70px;
+    background-color: rgb(255, 255, 255);
+    padding: 2px;
+    height: 28px;
+    cursor: pointer;
+  }
+
+  #sef p {
+    margin-left: -2px;
+  }
+
+  .logomarket {
+    position: absolute;
+    display: block;
+    left: 490px;
+    top: 10px;
+    cursor: pointer;
+
+  }
+
+  .logomarket img {
+    width: 35px;
+
+  }
+
+
+  .bx-flashing {
+    position: absolute;
+    right: 380px;
+    top: 69px;
+    display: none;
+  }
+
+  input[type=text] {
+    position: absolute;
+    right: 155px;
+    width: 250px;
+    height: 30px;
+    top: 68px;
+    border: 1px solid #d0cdcd;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 23%;
+    margin-top: 20px;
+  }
+
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cad {
+    border: 1px solid #b5aeae;
+    opacity: 0.5;
+
+  }
+
+  .new {
+    position: relative;
+    right: 330px;
+  }
+
+
+
+  .item-img img {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-gap: 2rem;
+    margin: 20rem;
+    position: relative;
+
+  }
+
+  .item {
+    box-shadow: 0 0 5px #303030;
+    transition: 0.3s;
+    position: relative;
+    right: 330px;
+  }
+
+  .item:hover {
+    box-shadow: 0 0 1px #303030;
+
+  }
+
+  .item-reft {
+    margin-left: 11rem;
+    position: relative;
+  }
+
+  .item-des,
+  .item-des2 {
+    margin-left: 20px;
+
+  }
+
+  .item-des p {
+    color: #8d8a8a;
+    font-weight: 200;
+    font-size: 18px;
+  }
+
+  .item-des2 p {
+
+    color: #8d8a8a;
+    font-weight: 300;
+    font-size: 10px;
+  }
+
+  .box {
+
+    width: 200px;
+
+  }
+
+  .bb {
+    display: block;
+    opacity: 0.5;
+    position: relative;
+    top: 200px;
+  }
+
+  .product-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr);
+    grid-gap: 2rem;
+    margin: 20rem;
+    position: relative;
+    bottom: 17rem;
+    left: 2rem;
+  }
+
+}
