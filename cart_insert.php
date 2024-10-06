@@ -30,14 +30,25 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['to
         $stmtOrderDetails = $conn->prepare($sqlOrderDetails);
 
         foreach ($_SESSION['cart'] as $item) {
+            // Insert order details
             $stmtOrderDetails->bindParam(':orderId', $orderId);
             $stmtOrderDetails->bindParam(':productId', $item['product_id']);
             $stmtOrderDetails->bindParam(':quantity', $item['quantity']);
             $stmtOrderDetails->bindParam(':price', $item['price']);
             $stmtOrderDetails->execute();
+
+            // Reduce stock quantity in products table
+            $sqlUpdateStock = "UPDATE products SET stockQty = stockQty - :quantity WHERE product_id = :productId";
+            $stmtUpdateStock = $conn->prepare($sqlUpdateStock);
+            $stmtUpdateStock->bindParam(':quantity', $item['quantity']);
+            $stmtUpdateStock->bindParam(':productId', $item['product_id']);
+            $stmtUpdateStock->execute();
         }
 
         $conn->commit();
+
+        // Set session variable to show success message
+        $_SESSION['order_success'] = true;
 
         unset($_SESSION['cart']);
 
