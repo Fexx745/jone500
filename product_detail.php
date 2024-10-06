@@ -2,19 +2,16 @@
 
 include('assets/condb/condb.php');
 
-// ตรวจสอบว่ามีการส่ง productId มาหรือไม่
 if (isset($_GET['productId'])) {
     $productId = $_GET['productId'];
 
-    // ดึงข้อมูลสินค้าโดยใช้ productId
-    $sql = "SELECT * FROM products WHERE product_id = :productId"; // ใช้ product_id
+    $sql = "SELECT * FROM products WHERE product_id = :productId";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':productId', $productId);
     $stmt->execute();
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($product) {
-        // ดึงข้อมูลสินค้าสำเร็จ
         $productName = $product['product_name'];
         $productDetail = $product['product_detail'];
         $price = $product['price'];
@@ -23,14 +20,14 @@ if (isset($_GET['productId'])) {
         $stockQty = $product['stockQty'];
     } else {
         echo "<script>alert('ไม่พบสินค้านี้ในระบบ'); window.location.href = 'index.php';</script>";
-        exit; // ออกจากสคริปต์
+        exit;
     }
 } else {
     echo "<script>alert('ไม่พบข้อมูลสินค้า'); window.location.href = 'index.php';</script>";
-    exit; // ออกจากสคริปต์
+    exit;
 }
 
-$conn = null; // ปิดการเชื่อมต่อกับฐานข้อมูล
+$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +37,7 @@ $conn = null; // ปิดการเชื่อมต่อกับฐาน
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $productName; ?> - Product Detail</title>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Update this path accordingly -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
 </head>
 
 <body>
@@ -57,15 +54,12 @@ $conn = null; // ปิดการเชื่อมต่อกับฐาน
                 <p><strong>ราคา:</strong> <?= $price; ?> $</p>
                 <p><strong>ขนาด:</strong> <?= $size; ?></p>
                 <p><strong>จำนวนในสต็อก:</strong> <?= $stockQty; ?></p>
-                <form action="addToCart.php" method="get">
-                    <input type="hidden" name="productId" value="<?= $product['product_id']; ?>">
-                    <button type="submit" class="btn btn-primary">สั่งซื้อ</button>
-                </form>
+                <a href="addToCart.php?productId=<?= $productId ?>&quantity=1" class="btn btn-primary">สั่งซื้อ</a>
             </div>
         </div>
     </div>
 
-    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Update this path accordingly -->
+    <script src="path/to/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

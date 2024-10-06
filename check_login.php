@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // ตรวจสอบรหัสผ่าน
         if (password_verify($password, $user['password'])) {
             // บันทึกข้อมูลส่วนตัวใน session
+            $_SESSION['customer_id'] = $user['customer_id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['first_name'] = $user['first_name'];  // แก้ไขการพิมพ์ผิดจาก 'fist_name'
             $_SESSION['last_name'] = $user['last_name'];

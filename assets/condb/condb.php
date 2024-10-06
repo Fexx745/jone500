@@ -8,7 +8,6 @@ $password = ''; // รหัสผ่าน MySQL
 try {
     // สร้างการเชื่อมต่อฐานข้อมูล
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-
     // ตั้งค่า PDO error mode ให้แสดงเป็น exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {

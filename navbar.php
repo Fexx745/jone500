@@ -1,6 +1,8 @@
 <?php
-session_start();
-?>
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="th">
 
@@ -38,9 +40,6 @@ session_start();
             </div>
         </div>
     </div>
-
-
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,13 +74,13 @@ session_start();
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="payment_confirmation.php">
                             <i class='bx bx-credit-card'></i>
                             แจ้งโอน
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="cart_history.php">
                             <i class='bx bxs-car-crash'></i>
                             เช็คสถานะ
                         </a>
