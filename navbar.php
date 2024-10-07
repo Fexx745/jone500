@@ -1,8 +1,8 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-    ?>
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="th">
 
@@ -12,6 +12,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <title>หน้าเว็บของคุณ</title>
+    <!-- ลิงก์ CSS ของ Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- ลิงก์ JavaScript ของ Bootstrap และ jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -53,12 +61,30 @@
                         หน้าหลัก
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <?php
+                // ดึงรายการหมวดหมู่จากฐานข้อมูล
+                include('assets/condb/condb.php');
+
+                $sql = "SELECT category_id, category_name FROM categories";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                ?>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-category'></i>
                         หมวดสินค้า
                     </a>
+                    <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                        <?php foreach ($categories as $category): ?>
+                            <a class="dropdown-item" href="category.php?category_id=<?= $category['category_id']; ?>">
+                                <?= $category['category_name']; ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class='bx bx-info-circle'></i>
