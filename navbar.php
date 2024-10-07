@@ -30,13 +30,14 @@ if (session_status() == PHP_SESSION_NONE) {
                 <img src="assets/imge/logo.png" alt="" class="img-fluid" style="max-width: 150px; height: auto;"> <!-- ปรับขนาด -->
             </div>
             <div class="search-bar d-flex align-items-center">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="ค้นหาสินค้า" aria-label="ค้นหาสินค้า">
-                    <button class="btn btn-outline-secondary" id="sef">
+                <form action="search.php" method="get" class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="ค้นหาสินค้า" aria-label="ค้นหาสินค้า" required>
+                    <button class="btn btn-outline-secondary" type="submit">
                         <i class='bx bx-search bx-flashing'></i> ค้นหา
                     </button>
-                </div>
+                </form>
             </div>
+
 
             <div class="d-flex align-items-center">
                 <div class="logonav me-2">
