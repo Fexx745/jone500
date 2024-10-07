@@ -81,21 +81,23 @@
       <?php
       include('assets/condb/condb.php');
 
-      $sql = "SELECT category_name, image FROM categories";
+      $sql = "SELECT category_id, category_name, image FROM categories";
       $result = $conn->query($sql);
 
       if ($result) {
         if ($result->rowCount() > 0) {
           foreach ($result as $row) {
             echo '
-              <div class="col-md-3 mb-4">
-                <div class="card text-center">
-                  <img src="assets/imge/category/' . $row["image"] . '" class="card-img-top" alt="">
-                  <div class="card-body">
-                    <p class="card-text">' . $row["category_name"] . '</p>
-                  </div>
-                </div>
-              </div>';
+          <div class="col-md-3 mb-4">
+            <div class="card text-center">
+              <a href="category.php?category_id=' . $row["category_id"] . '">
+                <img src="assets/imge/category/' . $row["image"] . '" class="card-img-top" alt="">
+              </a>
+              <div class="card-body">
+                <p class="card-text">' . $row["category_name"] . '</p>
+              </div>
+            </div>
+          </div>';
           }
         } else {
           echo "ไม่มีประเภทสินค้า";
@@ -108,55 +110,13 @@
       ?>
     </div>
 
-
-
-    <!-- new product -->
-    <h3 class="new mt-5">สินค้ามาใหม่</h3>
-    <div class="row">
-      <?php
-      include('assets/condb/condb.php');
-      $sql = "SELECT product_name, product_detail, price, size, image FROM products ORDER BY created_at DESC LIMIT 10";
-      $result = $conn->query($sql);
-
-      if ($result) {
-        if ($result->rowCount() > 0) {
-          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            echo '
-              <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                  <div class="card-img-top text-center">
-                    <div class="bb">
-                      <p>' . $row["size"] . '</p>
-                    </div>
-                    <img src="assets/imge/product/' . $row["image"] . '" class="img-fluid" alt="' . $row["product_name"] . '">
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title">' . $row["product_name"] . '</h5>
-                    <p class="card-text">' . $row["product_detail"] . '</p>
-                  </div>
-                  <div class="card-footer text-center">
-                    <span class="text-muted">' . $row["price"] . ' $</span>
-                  </div>
-                </div>
-              </div>';
-          }
-        } else {
-          echo "ไม่มีสินค้าใหม่";
-        }
-      } else {
-        echo "เกิดข้อผิดพลาดในการดึงข้อมูล";
-      }
-
-      $conn = null;
-      ?>
-    </div>
   </div>
 </body>
 
 </html>
 
 
-<!-- <div class="modal fade show" id="overlay" tabindex="-1" aria-labelledby="overlayLabel" aria-hidden="true" style="display: block;">
+<div class="modal fade show" id="overlay" tabindex="-1" aria-labelledby="overlayLabel" aria-hidden="true" style="display: block;">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -169,6 +129,7 @@
         </div>
         <div class="modal-footer">
           <button id="confirmButton" class="btn btn-primary">ตกลง</button>
+          <a class="btn btn-success" href="login.php">เข้าสู่ระบบ</a>
         </div>
       </div>
     </div>
@@ -187,4 +148,4 @@
         overlay.setAttribute('aria-hidden', 'true');
       });
     });
-  </script> -->
+  </script>

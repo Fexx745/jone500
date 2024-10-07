@@ -44,7 +44,7 @@ if (isset($_GET['productId']) && isset($_GET['quantity'])) {
             $_SESSION['cart'][] = $item;
         }
 
-        echo "<script>alert('สินค้าได้ถูกเพิ่มในตะกร้าเรียบร้อย'); window.location.href = 'cart.php';</script>";
+        echo "<script>window.location.href = 'cart.php';</script>";
     } else {
         echo "<script>alert('ไม่พบสินค้านี้ในระบบ'); window.location.href = 'index.php';</script>";
     }

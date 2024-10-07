@@ -6,7 +6,10 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['to
     $totalPrice = $_POST['totalPrice'];
 
     if (!isset($_SESSION['customer_id'])) {
-        echo "กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ";
+        echo "<script>
+                alert('กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ');
+                window.location.href = 'login.php';
+              </script>";
         exit();
     }
 
@@ -61,4 +64,3 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['to
 } else {
     echo "ตะกร้าสินค้าว่างหรือไม่มีข้อมูลราคา";
 }
-?>
