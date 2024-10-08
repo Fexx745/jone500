@@ -2,12 +2,10 @@
 session_start();
 include('assets/condb/condb.php');
 
-// ตรวจสอบว่ามีการส่ง productId และ quantity มาหรือไม่
 if (isset($_GET['productId']) && isset($_GET['quantity'])) {
     $productId = $_GET['productId'];
     $quantity = (int)$_GET['quantity'];
 
-    // ดึงข้อมูลสินค้าโดยใช้ productId
     $sql = "SELECT * FROM products WHERE product_id = :productId";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':productId', $productId);
@@ -23,23 +21,19 @@ if (isset($_GET['productId']) && isset($_GET['quantity'])) {
             'image' => $product['image']
         ];
 
-        // ตรวจสอบว่า session ตะกร้าสินค้าถูกสร้างหรือยัง ถ้ายังก็สร้าง
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
 
-        // ตรวจสอบว่ามีสินค้านี้อยู่ในตะกร้าแล้วหรือไม่
         $found = false;
         foreach ($_SESSION['cart'] as $key => $cartItem) {
             if ($cartItem['product_id'] == $productId) {
-                // ถ้ามีสินค้าอยู่แล้ว เพิ่มจำนวน
                 $_SESSION['cart'][$key]['quantity'] += $quantity;
                 $found = true;
                 break;
             }
         }
 
-        // ถ้าไม่มีสินค้าในตะกร้า ก็เพิ่มใหม่
         if (!$found) {
             $_SESSION['cart'][] = $item;
         }

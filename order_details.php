@@ -39,12 +39,13 @@ try {
     $stmtOrderDetails->bindParam(':orderId', $orderId);
     $stmtOrderDetails->execute();
     $orderDetails = $stmtOrderDetails->fetchAll(PDO::FETCH_ASSOC);
+    
 } catch (Exception $e) {
     echo "เกิดข้อผิดพลาดในการดึงข้อมูล: " . $e->getMessage();
     exit();
 }
 
-$conn = null; // ปิดการเชื่อมต่อกับฐานข้อมูล
+$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -54,23 +55,23 @@ $conn = null; // ปิดการเชื่อมต่อกับฐาน
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รายละเอียดการสั่งซื้อ - หมายเลขคำสั่ง <?= $orderId; ?></title>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- Update this path accordingly -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
 </head>
 
 <body>
     <?php include('navbar.php'); ?>
     <div class="container">
-        <h1 class="mt-5">รายละเอียดการสั่งซื้อ - หมายเลขคำสั่ง <?= $orderId; ?></h1>
         <h5 class="mt-4">ข้อมูลการสั่งซื้อ</h5>
         <p><strong>วันที่สั่งซื้อ:</strong> <?= date('Y-m-d H:i:s', strtotime($order['order_date'])); ?></p>
-        <p><strong>ราคา รวม:</strong> <?= number_format($order['total_price'], 2); ?> บาท</p>
+        <p><strong>ราคา รวมสินค้า:</strong> <?= number_format($order['total_product_price'], 2); ?> บาท</p>
+        <p><strong>ยอดรวมทั้งหมด (รวมค่าจัดส่ง):</strong> <?= number_format($order['total_price'], 2); ?> บาท</p> 
 
         <h5 class="mt-4">รายละเอียดสินค้า</h5>
         <?php if (count($orderDetails) > 0): ?>
             <table class="table table-bordered mt-2">
                 <thead>
                     <tr>
-                        <th>รูปสินค้า</th> <!-- เพิ่มคอลัมน์สำหรับรูปภาพ -->
+                        <th>รูปสินค้า</th>
                         <th>ชื่อสินค้า</th>
                         <th>จำนวน</th>
                         <th>ราคา</th>
@@ -81,9 +82,8 @@ $conn = null; // ปิดการเชื่อมต่อกับฐาน
                         <tr>
                             <td>
                                 <?php
-                                // ดึงชื่อสินค้าจาก tb_products โดยใช้ product_id
                                 include('assets/condb/condb.php');
-                                $sqlProduct = "SELECT product_name, image FROM products WHERE product_id = :productId"; // เพิ่ม product_image
+                                $sqlProduct = "SELECT product_name, image FROM products WHERE product_id = :productId";
                                 $stmtProduct = $conn->prepare($sqlProduct);
                                 $stmtProduct->bindParam(':productId', $detail['product_id']);
                                 $stmtProduct->execute();

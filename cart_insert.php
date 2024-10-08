@@ -3,7 +3,7 @@ session_start();
 include('assets/condb/condb.php');
 
 if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['totalPrice'])) {
-    $totalPrice = $_POST['totalPrice'];
+    $totalPrice = $_POST['totalPrice']; // Total price including shipping
 
     if (!isset($_SESSION['customer_id'])) {
         echo "<script>
@@ -16,13 +16,20 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['to
     try {
         $conn->beginTransaction();
 
+        // Calculate total product price from the cart
+        $totalProductPrice = 0;
+        foreach ($_SESSION['cart'] as $item) {
+            $totalProductPrice += $item['price'] * $item['quantity'];
+        }
+
         // Insert order with initial payment status set to 0 (pending)
-        $sqlOrder = "INSERT INTO tb_orders (customer_id, total_price, order_date, order_status) 
-                     VALUES (:customerId, :totalPrice, NOW(), 0)";
+        $sqlOrder = "INSERT INTO tb_orders (customer_id, total_price, total_product_price, order_date, order_status) 
+                     VALUES (:customerId, :totalPrice, :totalProductPrice, NOW(), 0)";
         $stmtOrder = $conn->prepare($sqlOrder);
         $customerId = $_SESSION['customer_id']; // Use customer_id from session
         $stmtOrder->bindParam(':customerId', $customerId);
-        $stmtOrder->bindParam(':totalPrice', $totalPrice);
+        $stmtOrder->bindParam(':totalPrice', $totalPrice); // Total price including shipping
+        $stmtOrder->bindParam(':totalProductPrice', $totalProductPrice); // Total product price
         $stmtOrder->execute();
 
         $orderId = $conn->lastInsertId();
@@ -64,3 +71,4 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0 && isset($_POST['to
 } else {
     echo "ตะกร้าสินค้าว่างหรือไม่มีข้อมูลราคา";
 }
+?>

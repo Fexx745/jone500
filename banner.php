@@ -1,11 +1,11 @@
   <!-- Swiper -->
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="imge/banner1.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="imge/banner2.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="imge/banner3.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="imge/banner6.jpg" alt=""></div>
-      <div class="swiper-slide"><img src="imge/banner7.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="assets/imge/banner1.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="assets/imge/banner2.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="assets/imge/banner3.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="assets/imge/banner6.jpg" alt=""></div>
+      <div class="swiper-slide"><img src="assets/imge/banner7.jpg" alt=""></div>
 
     </div>
     <div class="swiper-button-next"></div>

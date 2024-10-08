@@ -40,11 +40,19 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
             <div class="d-flex align-items-center">
-                <div class="logonav me-2">
-                    <img src="assets/imge/navmenu.png" alt="" class="img-fluid" style="max-width: 50px; height: auto;"> <!-- ปรับขนาด -->
-                </div>
-                <div class="logomarket">
-                    <img src="assets/imge/market.jpg" alt="" class="img-fluid" style="max-width: 50px; height: auto;"> <!-- ปรับขนาด -->
+                <div class="logomarket" style="position: relative; display: inline-block;">
+                    <a href="cart.php" style="text-decoration: none; position: relative;">
+                        <img src="assets/imge/market.png" alt="Cart" class="img-fluid" style="max-width: 50px; height: auto;"> <!-- เปลี่ยนเป็นโลโก้ตะกร้าสินค้า -->
+                        <?php
+                        // ตรวจสอบว่ามีสินค้าในตะกร้าหรือไม่
+                        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                            $cart_count = count($_SESSION['cart']);
+                            echo '<span class="badge badge-danger" style="position: absolute; top: -10px; right: -10px; font-size: 12px;">' . $cart_count . '</span>';
+                        } else {
+                            echo '<span class="badge badge-secondary" style="position: absolute; top: -10px; right: -10px; font-size: 12px;">0</span>';
+                        }
+                        ?>
+                    </a>
                 </div>
             </div>
         </div>

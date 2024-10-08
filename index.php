@@ -17,6 +17,8 @@
 
 <body>
   <?php include('navbar.php'); ?>
+  <?php include('banner.php'); ?>
+
 
   <div class="container mt-4">
     <h3 class="new">สินค้ามาใหม่</h3>
@@ -117,35 +119,48 @@
 
 
 <div class="modal fade show" id="overlay" tabindex="-1" aria-labelledby="overlayLabel" aria-hidden="true" style="display: block;">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="overlayLabel">ยินดีต้อนรับ!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <p>กรุณากด "ตกลง" เพื่อเข้าสู่ร้านค้า</p>
-          <img src="assets/imge/rev.jpg" alt="" class="img-fluid mb-3"><br>
-        </div>
-        <div class="modal-footer">
-          <button id="confirmButton" class="btn btn-primary">ตกลง</button>
-          <a class="btn btn-success" href="login.php">เข้าสู่ระบบ</a>
-        </div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="overlayLabel">ยินดีต้อนรับ!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>กรุณากด "ตกลง" เพื่อเข้าสู่ร้านค้า</p>
+        <img src="assets/imge/rev.jpg" alt="" class="img-fluid mb-3"><br>
+      </div>
+      <div class="modal-footer">
+        <button id="confirmButton" class="btn btn-primary">ตกลง</button>
+        <a class="btn btn-success" href="login.php">เข้าสู่ระบบ</a>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="main-content"></div>
+<div class="main-content"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const overlay = document.getElementById("overlay");
-      const confirmButton = document.getElementById("confirmButton");
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const overlay = document.getElementById("overlay");
+    const confirmButton = document.getElementById("confirmButton");
 
-      confirmButton.addEventListener("click", function() {
-        overlay.style.display = "none";
-        overlay.classList.remove('show');
-        overlay.setAttribute('aria-hidden', 'true');
-      });
+    const hasVisited = localStorage.getItem("hasVisited");
+
+    if (!hasVisited) {
+      overlay.style.display = "block";
+      overlay.classList.add('show');
+      overlay.setAttribute('aria-hidden', 'false');
+    } else {
+      overlay.style.display = "none";
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    confirmButton.addEventListener("click", function() {
+      overlay.style.display = "none";
+      overlay.classList.remove('show');
+      overlay.setAttribute('aria-hidden', 'true');
+      localStorage.setItem("hasVisited", "true");
     });
-  </script>
+  });
+</script>

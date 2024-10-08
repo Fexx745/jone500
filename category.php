@@ -2,10 +2,8 @@
 session_start();
 include('assets/condb/condb.php');
 
-// รับหมวดหมู่จาก URL (หากมี)
 $categoryId = isset($_GET['category_id']) ? $_GET['category_id'] : null;
 
-// Query ดึงรายการสินค้าตามหมวดหมู่ (ถ้ามีการเลือกหมวดหมู่)
 $sql = "SELECT * FROM products";
 if ($categoryId) {
     $sql .= " WHERE category_id = :categoryId";
@@ -26,15 +24,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หมวดหมู่สินค้า</title>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- ลิงก์ Bootstrap -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
 </head>
 <body>
-    <?php include('navbar.php'); ?> <!-- Include ไฟล์ navbar -->
+    <?php include('navbar.php'); ?>
 
     <div class="container mt-5">
         <h1>หมวดหมู่สินค้า</h1>
 
-        <!-- แสดงรายการสินค้า -->
         <div class="row">
             <?php if (count($products) > 0): ?>
                 <?php foreach ($products as $product): ?>
@@ -57,7 +54,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <script src="path/to/jquery.min.js"></script> <!-- ลิงก์ jQuery -->
-    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- ลิงก์ Bootstrap JavaScript -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -19,15 +19,14 @@ if ($searchTerm) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ผลการค้นหา</title>
-    <link rel="stylesheet" href="path/to/bootstrap.min.css"> <!-- ลิงก์ Bootstrap -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
 </head>
 <body>
-    <?php include('navbar.php'); ?> <!-- Include ไฟล์ navbar -->
+    <?php include('navbar.php'); ?>
 
     <div class="container mt-5">
         <h1>ผลการค้นหาสินค้า: "<?php echo htmlspecialchars($searchTerm); ?>"</h1>
 
-        <!-- แสดงรายการผลการค้นหา -->
         <div class="row">
             <?php if (!empty($searchResults)) : ?>
                 <?php foreach ($searchResults as $product) : ?>
@@ -50,7 +49,7 @@ if ($searchTerm) {
         </div>
     </div>
 
-    <script src="path/to/jquery.min.js"></script> <!-- ลิงก์ jQuery -->
-    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- ลิงก์ Bootstrap JavaScript -->
+    <script src="path/to/jquery.min.js"></script>
+    <script src="path/to/bootstrap.bundle.min.js"></script>
 </body>
 </html>
