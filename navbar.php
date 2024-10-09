@@ -27,7 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="container">
         <div class="d-flex align-items-center justify-content-between py-3">
             <div class="logo">
-                <img src="assets/imge/logo.png" alt="" class="img-fluid" style="max-width: 150px; height: auto;"> <!-- ปรับขนาด -->
+            <img src="assets/imge/logo.png" alt="" class="img-fluid" >
             </div>
             <div class="search-bar d-flex align-items-center">
                 <form action="search.php" method="get" class="input-group">

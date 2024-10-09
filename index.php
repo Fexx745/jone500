@@ -8,7 +8,7 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
+  <link rel="stylesheet" href="assets/css/styleindex.css">
   <link rel="icon" href="assets/imge/icon.png">
   <link rel="stylesheet" href="assets/js/script.js">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
@@ -41,11 +41,13 @@
             $price = $row["price"];
       ?>
             <div class="col-md-3 mb-3">
+
               <a href="product_detail.php?productId=<?= $row['product_id']; ?>" class="text-decoration-none">
+
                 <div class="card h-100">
                   <div class="card-img-top text-center">
                     <div class="bb">
-                      <p><?= $size; ?></p>
+                      <p class="size-text">Size: <?= $size; ?></p>
                     </div>
                     <img src="assets/imge/product/<?= $image; ?>" class="img-fluid" alt="<?= $productName; ?>">
                   </div>
@@ -54,7 +56,7 @@
                     <p class="card-text"><?= $productDetail; ?></p>
                   </div>
                   <div class="card-footer text-center">
-                    <span class="text-muted"><?= $price; ?> $</span>
+                    <span class="text-muted">Price: <?= $price; ?> $</span>
                   </div>
                 </div>
               </a>
@@ -90,16 +92,16 @@
         if ($result->rowCount() > 0) {
           foreach ($result as $row) {
             echo '
-          <div class="col-md-3 mb-4">
-            <div class="card text-center">
-              <a href="category.php?category_id=' . $row["category_id"] . '">
-                <img src="assets/imge/category/' . $row["image"] . '" class="card-img-top" alt="">
-              </a>
-              <div class="card-body">
-                <p class="card-text">' . $row["category_name"] . '</p>
-              </div>
-            </div>
-          </div>';
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 text-center"> <!-- ใช้ h-100 เพื่อให้การ์ดสูงเท่ากัน -->
+                        <a href="category.php?category_id=' . $row["category_id"] . '">
+                            <img src="assets/imge/category/' . $row["image"] . '" class="card-img-top" alt="">
+                        </a>
+                        <div class="card-body d-flex flex-column justify-content-between"> <!-- ใช้ Flexbox จัดตำแหน่งเนื้อหา -->
+                            <p class="card-text">' . $row["category_name"] . '</p>
+                        </div>
+                    </div>
+                </div>';
           }
         } else {
           echo "ไม่มีประเภทสินค้า";
@@ -107,6 +109,7 @@
       } else {
         echo "เกิดข้อผิดพลาดในการดึงข้อมูล";
       }
+
 
       $conn = null;
       ?>

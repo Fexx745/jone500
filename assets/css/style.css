@@ -17,9 +17,7 @@
 }
 
 .logo {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: 200px;
 }
 
 .logo img {
@@ -75,6 +73,8 @@ input[type=text] {
 .swiper {
   width: 100%;
   height: 55%;
+  position: relative;
+
 }
 
 .swiper-slide {
@@ -91,6 +91,10 @@ input[type=text] {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.logo{
+  margin-left: 100px;
 }
 
 
@@ -164,10 +168,13 @@ input[type=text] {
   top: 270px;
   text-align: right;
   display: none;
+  
 }
 
+
+
 .bb p {
-  color: #fcfcfc;
+  color: #000000;
   margin-right: 15px;
 }
 

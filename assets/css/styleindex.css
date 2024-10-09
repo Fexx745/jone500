@@ -1,0 +1,40 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+    font-family: 'Kanit', sans-serif;
+  }/* เปลี่ยนสีขนาดสินค้าเป็นสีดำ */
+.size-text {
+    color: #000; /* สีดำ */
+  }
+  
+  /* เปลี่ยนสีชื่อสินค้าเป็นสีดำ */
+  .card-title {
+    color: #000; /* สีดำ */
+  }
+  
+  /* เปลี่ยนสีรายละเอียดสินค้าเป็นสีดำ */
+  .card-text {
+    color: #000; /* สีดำ */
+  }
+  
+  /* เปลี่ยนสีราคาสินค้าเป็นสีดำ */
+  .text-muted {
+    color: #000; /* สีดำ */
+  }
+/* เปลี่ยนสีลิงก์เป็นสีดำ */
+a.text-decoration-none {
+    color: #000; /* สีดำ */
+  }
+  
+  /* เปลี่ยนสีลิงก์เมื่อ hover */
+  a.text-decoration-none:hover {
+    color: #e2e1e1; /* สีดำ (ยังคงสีดำเมื่อเอาเมาส์ไปชี้) */
+    text-decoration: none; /* ไม่ให้มีขีดเส้นใต้เมื่อ hover */
+  }
+  
