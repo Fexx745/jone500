@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'assets/condb/condb.php';
+include_once '../../assets/condb/condb.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = $_POST['first_name'];

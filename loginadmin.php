@@ -13,8 +13,9 @@
     <?php include('navbar.php'); ?>
 
     <div class="container">
-        <h2 class="mb-4">เข้าสู่ระบบ</h2>
-        <form action="check_login.php" method="post">
+        <h2 class="mb-4">เข้าสู่ระบบAdmin</h2>
+        <form action="check_login_admin.php" 
+        method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">อีเมล:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -27,13 +28,6 @@
 
             <div class="text-end mt-4">
                 <button type="submit" class="btn btn-success w-100">เข้าสู่ระบบ</button>
-            </div>
-
-            <div class="d-flex justify-content-between mt-3">
-                <a href="reg.php" class="btn btn-primary w-100">ลงทะเบียน</a>
-            </div>
-            <div class="d-flex justify-content-between mt-3">
-                <a href="loginadmin.php" class="btn btn-dark w-100">เข้าสู่ระบบAdmin</a>
             </div>
         </form>
     </div>
